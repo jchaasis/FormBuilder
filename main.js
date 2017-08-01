@@ -101,23 +101,26 @@ let fields = document.querySelector('#fields');
 for (let i=0; i<formData.length; i++){
 
   if (formData[i].type === 'select'){
-  for (let s=0; s<formData[i].options.length; s++)
+    let select = document.createElement('select');
 
-     select = document.createElement('select');
+  for (let s=0; s<formData[i].options.length; s++){
     let option = document.createElement('option');
     option.setAttribute('label', formData[i].options[s].label);
     option.setAttribute('value', formData[i].options[s].value);
-    option.textContent('option');
-    // option.textContent(formData[i].options[s].label);
+    // option.setAttribute('placeholder', 'Select Language...')
     select.appendChild(option);
     fields.appendChild(select);
-
-
-  // else if( formData[i].type === "textarea"){
-  //     let area=
-  //
-  // }
+  }
 }
+  else if( formData[i].type === "textarea"){
+      let textBox = document.createElement ('textarea');
+      textBox.setAttribute('id', formData[i].id);
+      textBox.setAttribute('placeholder', formData[i].label);
+      textBox.setAttribute('rows', 10);
+      fields.appendChild(textBox);
+
+  }
+
   else {
     let input=document.createElement( 'input');
     input.setAttribute('type', formData[i].type);
