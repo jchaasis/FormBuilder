@@ -98,8 +98,34 @@ let formData = [
 // -------- Your Code Goes Below this Line --------
 let fields = document.querySelector('#fields');
 
-for (let i=0; i<formdata.length; i++){
-    let firstName = formData[0].label;
-    
+for (let i=0; i<formData.length; i++){
+
+  if (formData[i].type === 'select'){
+  for (let s=0; s<formData[i].options.length; s++)
+
+     select = document.createElement('select');
+    let option = document.createElement('option');
+    option.setAttribute('label', formData[i].options[s].label);
+    option.setAttribute('value', formData[i].options[s].value);
+    option.textContent('option');
+    // option.textContent(formData[i].options[s].label);
+    select.appendChild(option);
+    fields.appendChild(select);
+
+
+  // else if( formData[i].type === "textarea"){
+  //     let area=
+  //
+  // }
+}
+  else {
+    let input=document.createElement( 'input');
+    input.setAttribute('type', formData[i].type);
+    input.setAttribute('id', formData[i].id);
+    input.setAttribute('placeholder', formData[i].label);
+    fields.appendChild(input);
+    }
+
+
 
 }
